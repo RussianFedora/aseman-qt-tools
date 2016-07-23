@@ -1,5 +1,9 @@
 %global channel stable
 
+%if 0%{?fedora} <= 24
+%global _qt5_qmldir %{_qt5_archdatadir}/qml
+%endif
+
 Name:           aseman-qt-tools
 Version:        1.0.0
 Release:        1%{?dist}
