@@ -6,12 +6,15 @@
 
 Name:           aseman-qt-tools
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Shared tools and functions, used in the aseman's projects
 
 License:        GPLv3+
 URL:            https://github.com/Aseman-Land/%{name}
 Source0:        %{url}/archive/v%{version}-%{channel}/%{name}-%{version}.tar.gz
+
+# https://github.com/Aseman-Land/aseman-qt-tools/commit/47412ddb26acf227ee6cb6950f6e9ded01f3375c
+Patch0001:      0001-add-plugin-definition-in-qmldir.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  qt5-qtbase-devel
@@ -25,7 +28,7 @@ BuildRequires:  qtkeychain-qt5-devel
 %{summary}.
 
 %prep
-%autosetup -n %{name}-%{version}-%{channel}
+%autosetup -n %{name}-%{version}-%{channel} -p1
 mkdir %{_target_platform}
 
 %build
@@ -48,5 +51,8 @@ popd
 %{_qt5_qmldir}/AsemanTools/
 
 %changelog
+* Sat Jul 23 2016 Igor Gnatenko <ignatenko@redhat.com> - 1.0.0-2
+- Backport critical patch
+
 * Sat Jul 23 2016 Igor Gnatenko <ignatenko@redhat.com> - 1.0.0-1
 - Initial package
