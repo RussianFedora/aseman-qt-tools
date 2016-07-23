@@ -16,6 +16,7 @@ Source0:        %{url}/archive/v%{version}-%{channel}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtquick1-devel
+BuildRequires:  qt5-qtmultimedia-devel
 BuildRequires:  qt5-qtsensors-devel
 BuildRequires:  qt5-qtlocation-devel
 BuildRequires:  qtkeychain-qt5-devel
