@@ -1,12 +1,11 @@
 %global channel stable
 
-%if 0%{?fedora} <= 24
-%global _qt5_qmldir %{_qt5_archdatadir}/qml
-%endif
+# Since Qt 5.7.0 is not needed
+%{!?_qt5_qmldir:%global _qt5_qmldir %{_qt5_archdatadir}/qml}
 
 Name:           aseman-qt-tools
 Version:        1.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Shared tools and functions, used in the aseman's projects
 
 License:        GPLv3+
@@ -29,6 +28,8 @@ BuildRequires:  qtkeychain-qt5-devel
 
 %prep
 %autosetup -n %{name}-%{version}-%{channel} -p1
+# https://github.com/Aseman-Land/aseman-qt-tools/pull/3
+find -type f -executable -exec chmod -x {} ';'
 mkdir %{_target_platform}
 
 %build
@@ -51,6 +52,9 @@ popd
 %{_qt5_qmldir}/AsemanTools/
 
 %changelog
+* Sat Jul 23 2016 Igor Gnatenko <ignatenko@redhat.com> - 1.0.0-3
+- Remove executable flag from files
+
 * Sat Jul 23 2016 Igor Gnatenko <ignatenko@redhat.com> - 1.0.0-2
 - Backport critical patch
 
