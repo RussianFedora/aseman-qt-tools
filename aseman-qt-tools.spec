@@ -5,7 +5,7 @@
 
 Name:           aseman-qt-tools
 Version:        1.0.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Shared tools and functions, used in the aseman's projects
 
 License:        GPLv3+
@@ -17,7 +17,7 @@ Patch0001:      0001-add-plugin-definition-in-qmldir.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-qtquick1-devel
+BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  qt5-qtmultimedia-devel
 BuildRequires:  qt5-qtsensors-devel
 BuildRequires:  qt5-qtlocation-devel
@@ -52,6 +52,9 @@ popd
 %{_qt5_qmldir}/AsemanTools/
 
 %changelog
+* Sun Jul 24 2016 Igor Gnatenko <ignatenko@redhat.com> - 1.0.0-4
+- Replace BR with proper qt5-qtdeclarative
+
 * Sat Jul 23 2016 Igor Gnatenko <ignatenko@redhat.com> - 1.0.0-3
 - Remove executable flag from files
 
